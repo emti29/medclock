@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h2>{% block title %}Crear una publicación {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <label for="nombre_medicamento">Nombre del medicamento</label>
+        <input type="text" name="nombre_medicamento" id="nombre_medicamento" required>
+        <label for="descripcion">Descripcion del medicamento</label>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+        <label for="rut">Rut del Paciente</label>
+        <input type="text" name="rut" id="rut" required>
+        <label for="hora">Hora</label>
+        <input type="text" name="hora" id="hora" required>
+        <input type="submit", value="Guardar">
+    </form>
+{% endblock %}

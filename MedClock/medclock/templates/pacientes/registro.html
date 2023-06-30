@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h2>{% block title %}Registrar pacientes {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form method='POST'>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre", required>
+        <label for="usuario">Nombre de usuario</label>
+        <input type="text" name="usuario" id="usuario", required>
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="contraseña" id="contraseña", required>
+        <label for="rut">Rut</label>
+        <input type="text" name="rut" id="rut", required>
+        <input type="submit", value="Registrar">
+    
+    </form>
+
+{% endblock %}
+
+__tablename__ = 'pacientes'
+id = db.Column(db.Integer, primary_key=True)
+nombre = db.Column(db.String(50))
+usuario = db.Column(db.String(50))
+contraseña = db.Column(db.Text)
+author = db.Column(db.Integer, db.ForeignKey('medicos.id'))
+rut = db.Column(db.String(12), unique=True)

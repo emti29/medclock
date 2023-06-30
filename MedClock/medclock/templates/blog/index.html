@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h2>{% block title %}Publicaciones {% endblock %}</h2>
+    {% if g.medico %}
+        <a href="{{ url_for('pacientes.registro') }}">Nuevo Paciente</a>
+        <a href="{{ url_for('blog.create') }}">Nueva Publicación</a>
+    {% endif%}
+{% endblock %}
+
+{% block content %}
+
+{% for medicamento in medicamentos %}
+    <article>
+        <header>
+            <div>
+               <h1>{{ medicamentos.nombre_medicamento }}</h1>
+                <div class="about">
+                    Publicado por {{ get_medico(medicamento.id_medico).username}}
+                    el {{ medicamento.created.strftime('%Y-%m-%d') }}
+                </div> 
+            </div>
+            <div>
+                {% if g.medico.id == medicamento.author %}
+                    <a href="{{ url_for('blog.update', id=medicamento.id) }}">Editar</a>
+                    <a href="{{ url_for('blog.delete', id=medicamento.id) }}">Eliminar</a>
+                {% endif %}
+            </div>
+        </header>
+        <div>
+            <p>{{ medicamento.descripcion }}</p>
+        </div>
+    </article>
+{% endfor %}
+
+{% endblock %}

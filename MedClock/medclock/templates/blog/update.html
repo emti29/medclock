@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h2>{% block title %}Actualizar una publicación {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <label for="title">Título</label>
+        <input type="text" name="title" id="title" value="{{ medicamentos.nombre_medicamento }}" required>
+        <label for="descripcion">Contenido</label>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10">{{ medicamentos.descripcion }}</textarea>
+        <input type="submit", value="Guardar">
+    </form>
+{% endblock %}
